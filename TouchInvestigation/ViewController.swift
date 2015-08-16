@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MagicViewDelegate {
     
     var originalX : CGFloat!
     var originalY : CGFloat!
@@ -43,7 +43,21 @@ class ViewController: UIViewController {
         containerView.addSubview(button2)
     }
     
+    func animationDidFinish() {
+        self.containerView.hidden = false
+        UIView.animateWithDuration(3.0, delay: 0.5, options: UIViewAnimationOptions.CurveEaseOut,
+            animations: {
+                self.button.transform = CGAffineTransformMakeRotation(45.0)
+            },
+            completion: {(var b) in
+                
+            }
+        )
+    }
+    
     func baz() {
+        containerView.hidden = true
+        tableViewController.delegate = self
         tableViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         presentViewController(tableViewController, animated: true, completion: nil)
     }

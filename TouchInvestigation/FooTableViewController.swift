@@ -1,6 +1,12 @@
 import UIKit
 
+protocol MagicViewDelegate {
+    func animationDidFinish()
+}
+
 class FooTableViewController: UITableViewController {
+    
+    var delegate : MagicViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +29,10 @@ class FooTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {        
-        self.dismissViewControllerAnimated(true, completion: nil)
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.dismissViewControllerAnimated(true) {
+            delegate?.animationDidFinish()
+        }
     }
     
 }
