@@ -13,6 +13,7 @@
 		9E11160D1B80079F00189380 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E11160C1B80079F00189380 /* Images.xcassets */; };
 		9E1116101B80079F00189380 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E11160E1B80079F00189380 /* LaunchScreen.xib */; };
 		9E11161C1B80079F00189380 /* TouchInvestigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E11161B1B80079F00189380 /* TouchInvestigationTests.swift */; };
+		9E7736011B81349F00BF9706 /* FooTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7736001B81349F00BF9706 /* FooTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		9E1116151B80079F00189380 /* TouchInvestigationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchInvestigationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E11161A1B80079F00189380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E11161B1B80079F00189380 /* TouchInvestigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchInvestigationTests.swift; sourceTree = "<group>"; };
+		9E7736001B81349F00BF9706 /* FooTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				9E11160C1B80079F00189380 /* Images.xcassets */,
 				9E11160E1B80079F00189380 /* LaunchScreen.xib */,
 				9E1116031B80079F00189380 /* Supporting Files */,
+				9E7736001B81349F00BF9706 /* FooTableViewController.swift */,
 			);
 			path = TouchInvestigation;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E1116081B80079F00189380 /* ViewController.swift in Sources */,
+				9E7736011B81349F00BF9706 /* FooTableViewController.swift in Sources */,
 				9E1116061B80079F00189380 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +415,7 @@
 				9E1116211B80079F00189380 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9E1116221B80079F00189380 /* Build configuration list for PBXNativeTarget "TouchInvestigationTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +424,7 @@
 				9E1116241B80079F00189380 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

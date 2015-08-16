@@ -9,6 +9,9 @@ class ViewController: UIViewController {
     
     var button : UIButton!
     var button2 : UIButton!
+    var button3 : UIButton!
+    
+    var tableViewController = FooTableViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +23,12 @@ class ViewController: UIViewController {
         button.backgroundColor = UIColor.greenColor()
         button.addTarget(self, action: "foo", forControlEvents: .TouchDown)
         
+        button3 = UIButton(frame: CGRectMake(200, 350, 100, 100))
+        button3.backgroundColor = UIColor.purpleColor()
+        button3.addTarget(self, action: "baz", forControlEvents: .TouchDown)
+        
         view.addSubview(button)
+        view.addSubview(button3)
         
         containerView.frame = CGRectMake(self.view.frame.width, originalY, 150, self.view.frame.height)
         containerView.userInteractionEnabled = true
@@ -35,16 +43,9 @@ class ViewController: UIViewController {
         containerView.addSubview(button2)
     }
     
-    @IBAction func left() {
-        UIView.animateWithDuration(0.3) {
-            self.view.frame = CGRectMake(self.originalX - 150, self.originalY, self.view.frame.width + 150, self.view.frame.height)
-        }
-    }
-    
-    @IBAction func right() {
-        UIView.animateWithDuration(0.3) {
-            self.view.frame = CGRectMake(self.originalX, self.originalY, self.view.frame.width, self.view.frame.height)
-        }
+    func baz() {
+        tableViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        presentViewController(tableViewController, animated: true, completion: nil)
     }
     
     func foo() {
@@ -56,6 +57,18 @@ class ViewController: UIViewController {
     func bar() {
         UIView.animateWithDuration(1.0) {
             self.view.backgroundColor = UIColor.blueColor()
+        }
+    }
+    
+    @IBAction func left() {
+        UIView.animateWithDuration(0.3) {
+            self.view.frame = CGRectMake(self.originalX - 150, self.originalY, self.view.frame.width + 150, self.view.frame.height)
+        }
+    }
+    
+    @IBAction func right() {
+        UIView.animateWithDuration(0.3) {
+            self.view.frame = CGRectMake(self.originalX, self.originalY, self.view.frame.width, self.view.frame.height)
         }
     }
 
