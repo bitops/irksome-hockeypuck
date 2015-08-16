@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     var containerView = UIView()
     
     var button : UIButton!
+    var button2 : UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,25 +20,23 @@ class ViewController: UIViewController {
         originalY      = self.view.frame.origin.y
         frameHeight    = self.view.frame.height
         frameWidth     = self.view.frame.width
-        originalCenter = self.view.center
+        
+        button = UIButton(frame: CGRectMake(200, 25, 100, 100))
+        button.backgroundColor = UIColor.greenColor()
+        button.addTarget(self, action: "foo", forControlEvents: .TouchDown)
+        
+        view.addSubview(button)
         
         containerView.userInteractionEnabled = true
         containerView.frame = CGRectMake(frameWidth, originalY, 150, frameHeight)
         containerView.backgroundColor = UIColor.magentaColor()
         containerView.clipsToBounds = false
         
-        var button = UIButton(frame: CGRectMake(200, 25, 100, 100))
-        button.backgroundColor = UIColor.greenColor()
-        button.addTarget(self, action: "foo", forControlEvents: .TouchDown)
-        
-        view.addSubview(button)
-        
-        view.addSubview(containerView)
-        
-        var button2 = UIButton(frame: CGRectMake(25, 25, 100, 100))
+        button2 = UIButton(frame: CGRectMake(25, 25, 100, 100))
         button2.backgroundColor = UIColor.cyanColor()
         button2.addTarget(self, action: "foo", forControlEvents: .TouchDown)
         
+        view.addSubview(containerView)
         containerView.addSubview(button2)
     }
     
@@ -52,27 +51,65 @@ class ViewController: UIViewController {
             }
         )
     }
-
+    
+    func goodLeft() {
+        containerView.frame = CGRectMake(frameWidth - 150, originalY, 150, frameHeight)
+    }
+    
+    func goodRight() {
+        containerView.frame = CGRectMake(frameWidth, originalY, 150, frameHeight)
+    }
+    
+    func badLeft() {
+        view.frame = CGRectMake(originalX - 150, originalY, view.frame.width, view.frame.height)
+    }
+    
+    func badRight() {
+        view.frame = CGRectMake(originalX, originalY, view.frame.width, view.frame.height)
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        NSLog("got touches")
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    let good = true
     
     @IBAction func left() {
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveLinear, animations: {
-//            var x = self.originalCenter.x - 150
-//            self.view.center = CGPointMake(x, self.originalCenter.y)
-//            self.view.backgroundColor = UIColor.brownColor()
-            self.containerView.frame = CGRectMake(self.frameWidth - 150, self.originalY, 150, self.frameHeight)
-            }, completion: { (var b) -> Void in
-                
-        })
+        UIView.animateWithDuration(0.3,
+            animations: {
+                if self.good {
+                    self.goodLeft()
+                } else {
+                    self.badLeft()
+                }
+            },
+            completion: { (var b) in
+                self.logCoordinates()
+            }
+        )
     }
     
     @IBAction func right() {
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveLinear, animations: {
-//            self.view.center = self.originalCenter
-//            self.view.backgroundColor = UIColor.whiteColor()
-            self.containerView.frame = CGRectMake(self.frameWidth, self.originalY, 150, self.frameHeight)
-            }, completion: { (var b) -> Void in
-                
-        })
+        UIView.animateWithDuration(0.3,
+            animations: {
+                if self.good {
+                    self.goodRight()
+                } else {
+                    self.badRight()
+                }
+            },
+            completion: { (var b) in
+                self.logCoordinates()
+            }
+        )
+    }
+    
+    func logCoordinates() {
+        NSLog("containerView frame x \(self.containerView.frame.origin.x)")
+        NSLog("containerView frame y \(self.containerView.frame.origin.y)")
+        NSLog("button2 frame x \(self.button2.frame.origin.x)")
+        NSLog("button2 frame y \(self.button2.frame.origin.y)")
     }
 }
 
